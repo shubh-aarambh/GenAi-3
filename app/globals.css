@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #030303;
+  --foreground: #ffffff;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow: hidden;
+}
+
+/* Beautiful custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Cinematic Background Gradients */
+.cinematic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  filter: blur(120px);
+  border-radius: 50%;
+  animation: orbFloat 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+}
+
+.orb-1 {
+  width: 60vw;
+  height: 60vw;
+  top: -10vh;
+  left: -20vw;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, rgba(0,0,0,0) 60%);
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 50vw;
+  height: 50vw;
+  bottom: -20vh;
+  right: -10vw;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(0,0,0,0) 60%);
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 70vw;
+  height: 40vw;
+  top: 40vh;
+  left: 20vw;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(0,0,0,0) 60%);
+  animation-delay: -12s;
+}
+
+.orb-4 {
+  width: 40vw;
+  height: 40vw;
+  top: 10vh;
+  right: 20vw;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0,0,0,0) 60%);
+  animation-delay: -18s;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(8%, 10%) scale(1.1) rotate(10deg); }
+  66% { transform: translate(-8%, -5%) scale(0.9) rotate(-5deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+/* Glassmorphism Utilities */
+.ultra-glass {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255,255,255,0.02);
+}
+
+.glowing-border-focus:focus-within {
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.5), 0 0 20px 0 rgba(6, 182, 212, 0.2);
+  border-color: transparent;
+}
+
+/* Dynamic Gradient Text */
+.text-gradient {
+  background: linear-gradient(to right, #22d3ee, #c084fc, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Typing Indicator Animation */
+.typing-orb {
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px currentColor; }
+}
